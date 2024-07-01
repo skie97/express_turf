@@ -6,7 +6,7 @@ Uses turf.js to do the computations.
 ## To Use
 
 The main function is getIntersections.
-To pass in an array of objects conforming to the sightingsData
+To pass in an array of objects conforming to the sightingsData object interface.
 The anticipation is that there are sightings data that are each timestamped, with it's own degreeOfUncertainty
 based on the sensor performance, and an anticipated average speed the COI is moving.
 
