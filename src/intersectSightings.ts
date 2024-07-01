@@ -72,10 +72,13 @@ export function getIntersection(data: sightingData[], currentTime: Date): Featur
     }
     var result = data.map<Feature<Polygon|MultiPolygon>>(
         (value) => {
+            console.assert(
+                differenceInSeconds(currentTime, value.sightingDateTime) >= 0, 
+                "The current time is before the sighting timestamp, which is not possible.")
             return getPolyWithTimeLapsed(
                 getSector(value.position, value.bearingInDeg, value.degreeOfUncertainty),
                 value.avgSpeedInKmh,
-                differenceInSeconds(value.sightingDateTime, currentTime)
+                differenceInSeconds(currentTime, value.sightingDateTime)
             );
         }
     )
